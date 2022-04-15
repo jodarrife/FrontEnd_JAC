@@ -27,19 +27,17 @@ export class MenuPrincipalComponent implements OnInit {
 
   public adminPages = [
     {
-      title: 'Dashboard',
-      url: '/home/dashboard',
-      iconMaterial: 'dashboard',
-      iconFa: null
-    },
-    {
       title: 'Inicio',
       url: '/home/landing',
       iconMaterial: 'home',
       iconFa: null
     },
-   
-
+    {
+      title: 'Noticias',
+      url: '/comunas',
+      iconMaterial: null,
+      iconFa: 'fas fa-city'
+    },
     {
       title: 'Comunas',
       url: '/comunas',
@@ -53,53 +51,23 @@ export class MenuPrincipalComponent implements OnInit {
       iconFa: 'fas fa-city'
     },
     {
+      title: 'Perfiles JAC',
+      url: '/junta',
+      iconMaterial: null,
+      iconFa: 'fas fa-user-shield'
+    },
+    {
       title: 'Habitantes',
       url: '/habitantes',
       iconMaterial: null,
       iconFa: 'fas fa-users'
     },
     {
-      title: 'PQRS',
-      url: '/pqrs',
-      iconMaterial: 'question_answer',
-      iconFa: null
-    },
-    /*
-    {
-      title: 'Correspondencia',
-      url: '/correspondencias',
-      iconMaterial: null,
-      iconFa: 'fas fa-folder-open'
-    },
-    */
-    {
-      title: 'Junta administrativa',
+      title: 'Informacion JAC',
       url: '/junta',
       iconMaterial: null,
       iconFa: 'fas fa-user-shield'
     },
-    /*
-    {
-      title: 'Convenios',
-      url: '/convenios',
-      iconMaterial: null,
-      iconFa: 'fas fa-file-signature'
-    },
-    */
-    {
-      title: 'Lineas de Atención',
-      url: '/lineasAtencion',
-      iconMaterial: null,
-      iconFa: 'fas fa-file-signature'
-    },
-    /*    
-    {
-      title: 'Publicaciones',
-      url: '/publicaciones',
-      iconMaterial: null,
-      iconFa: 'fas fa-file-invoice'
-    },*/
-
   ];
 }
 
