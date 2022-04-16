@@ -11,7 +11,7 @@ export class MenuPrincipalComponent implements OnInit {
   private _mobileQueryListener: () => void;
   user:any
   mobileQuery: MediaQueryList;
-
+  
   constructor(
     changeDetectorRef: ChangeDetectorRef,
      media: MediaMatcher, 
@@ -23,12 +23,13 @@ export class MenuPrincipalComponent implements OnInit {
     }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
+    this.user="Admin";
   }
 
   public adminPages = [
     {
       title: 'Inicio',
-      url: '/home/landing',
+      url: '/home/dashboard',
       iconMaterial: 'home',
       iconFa: null
     },

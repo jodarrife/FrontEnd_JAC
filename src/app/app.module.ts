@@ -14,12 +14,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuPrincipalComponent
+    MenuPrincipalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

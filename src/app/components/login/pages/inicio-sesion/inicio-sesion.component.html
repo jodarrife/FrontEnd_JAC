@@ -1,0 +1,39 @@
+<div class="row center-xs margin-top-50">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 padding-10">
+        <div class="box">
+            <mat-card class="shadow3 borde-radio-15">
+                <div class="row center-xs">
+                    <h2>Inicio de Sesion</h2>
+                </div>
+                <mat-dialog-content>
+                    <div class="row center-xs">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Correo (*)</mat-label>
+                            <input matInput placeholder="Correo" formControlName="Correo">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password (*)</mat-label>
+                            <input matInput placeholder="Password" formControlName="Password">
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="row margin-0 padding-10">
+                        <span>No tienes cuenta? </span>
+                        <b [routerLink]="['/login/registro']">Registrate</b>
+                      </div>
+                </mat-dialog-content>
+    
+                <div class="row center-xs">
+                    <div class="col-xs">
+                        <button mat-flat-button type="submit" color="primary">Iniciar Sesion</button>
+                    </div>
+                    <div class="col-xs">
+                        <button mat-flat-button type="button" color="warn" [routerLink]="['/home/dashboard']">Cancelar</button>
+                    </div>
+    
+                </div>
+            </mat-card>
+        </div>
+    
+    </div>
+</div>
