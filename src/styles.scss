@@ -12,7 +12,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$FrontEnd-primary: mat.define-palette(mat.$indigo-palette);
+//https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=4CAF50
+//https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=43A047
+$FrontEnd-primary: mat.define-palette(mat.$green-palette);
 $FrontEnd-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -24,7 +26,8 @@ $FrontEnd-theme: mat.define-light-theme((
   color: (
     primary: $FrontEnd-primary,
     accent: $FrontEnd-accent,
-    warn: $FrontEnd-warn,
+    warn: $FrontEnd-warn
+
   )
 ));
 
@@ -81,6 +84,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-radius: 10px !important;
 }
 
+//SOMBRAS
 .shadow1 { 
   box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(108, 113, 131, 0.2) !important;
 }
@@ -97,8 +101,19 @@ back-color{
   background-color: #F2F7FF !important;
 }
 
+/// FONTS
+.font1{
+  font-family: 'Montserrat', sans-serif;
+}
+.font1cursiva{
+  font-family: 'Rowdies', cursive;
+}
+
 
 //imagenes de fondo
+.loginimage{
+  background-image: url(~src/assets/svg/login.svg);
+}
 .habitantesimage{
   background-image: url(~src/assets/svg/habitantes.svg);
   background-size: cover;

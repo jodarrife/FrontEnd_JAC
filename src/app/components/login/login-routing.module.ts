@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: '', component: LoginComponent ,redirectTo: 'login'},
   { path: 'login', loadChildren: () => import('./pages/inicio-sesion/inicio-sesion.module').then(m => m.InicioSesionModule) },
   { path: 'registro', loadChildren: () => import('./pages/registrarse/registrarse.module').then(m => m.RegistrarseModule) },
+  { path: 'recuperarPassword', loadChildren: () => import('./pages/recuperar/recuperar.module').then(m => m.RecuperarModule) },
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

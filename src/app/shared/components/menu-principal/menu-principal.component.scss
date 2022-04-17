@@ -7,8 +7,14 @@
     left: 0;
     right: 0;
   }
+  .example-toolbar{
+    height: 55px;
+    color: white;
+  }
   .material-icons.color_red { color: #ff0000; }
-  
+  .task{
+    font-family: 'Montserrat', sans-serif;
+  }
   .example-is-mobile .example-toolbar {
     position: fixed;
     /* Make sure the toolbar will stay on top of the content as it scrolls past. */
