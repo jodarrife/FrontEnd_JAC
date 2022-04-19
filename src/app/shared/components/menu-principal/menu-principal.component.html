@@ -22,7 +22,7 @@
 
         <mat-menu #menu="matMenu" class="font1">
             <div class="font1" *ngIf="!user">
-                <button class="font1" mat-menu-item [routerLink]="['/login']">
+                <button class="font1" mat-menu-item [routerLink]="['/authentication']">
                     <mat-icon color="primary">assignment_ind</mat-icon>
                     <span class="font1">Iniciar Sesion</span>
                 </button>
@@ -46,13 +46,14 @@
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
             fixedTopGap="56" class="shadow3 font1">
             <mat-nav-list class="padding-16 font1">
-                <mat-list-item *ngFor="let page of adminPages" [routerLink]="[page.url]">
+                <mat-list-item *ngFor="let page of allPages" [routerLink]="[page.url]">
                     <mat-icon color="primary" *ngIf="page.iconMaterial" matListIcon>{{page.iconMaterial}}</mat-icon>
                     <h3 [class]="'task'" matLine> {{page.title}}</h3>
                     <i *ngIf="page.iconFa" [class]="page.iconFa + ' primary'" matListIcon></i>
                 </mat-list-item>
             </mat-nav-list>
         </mat-sidenav>
+
 
         <mat-sidenav-content>
             <ng-content></ng-content>

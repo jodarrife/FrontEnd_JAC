@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioSesionComponent implements OnInit {
 
+  //Variable
+  hide = true;
   constructor() { }
 
   ngOnInit(): void {

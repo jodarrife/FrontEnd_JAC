@@ -11,18 +11,22 @@
                     <mat-dialog-content>
                         <div class="row center-xs font1">
                             <mat-form-field appearance="outline">
-                                <mat-label class="font1">Correo (*)</mat-label>
-                                <input class="font1" matInput placeholder="Correo" formControlName="Correo">
+                                <mat-label class="font1" >Enter your Email(*)</mat-label>
+                                <input  matInput class="font1"  >
                             </mat-form-field>
                             <mat-form-field appearance="outline">
-                                <mat-label class="font1" >Password (*)</mat-label>
-                                <input class="font1" matInput placeholder="Password" formControlName="Password">
+                                <mat-label class="font1" >Enter your password(*)</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
                             </mat-form-field>
+
                         </div>
     
                         <div class="row margin-0 padding-10 font1">
                             <span>¿Se te olvido la Contraseña? </span>
-                            <b [routerLink]="['/login/recuperarPassword']">Click Aquí</b>
+                            <b [routerLink]="['/authentication/recuperarPassword']">Click Aquí</b>
                         </div>
     
                     </mat-dialog-content>
@@ -33,7 +37,7 @@
                         </div>
                         <div class="row margin-0 padding-10 font1">
                             <span>¿No tienes cuenta? </span>
-                            <b [routerLink]="['/login/registro']">Registrate</b>
+                            <b [routerLink]="['/authentication/registro']">Registrate</b>
                         </div>
     
     
