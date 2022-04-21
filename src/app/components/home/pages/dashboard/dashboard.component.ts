@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import {Chart, registerables} from 'chart.js';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,33 +7,70 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 })
 export class DashboardComponent implements OnInit {
 
+  chartPQRS!: Chart;
 
-  constructor(
-    private breakpointObserver: BreakpointObserver
-    ) {}
+  constructor() { }
 
   ngOnInit(): void {
+    this.crearChartPQRS()
   }
 
-   /** Based on the screen size, switch from standard to one column per row */
-   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
+  crearChartPQRS(){
+    Chart.register(...registerables);
+    this.chartPQRS = new Chart('chartPQRS', {
+      type: 'line',
+      data: {
+          labels: ['Lunes', 'Martes', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
+          datasets: [{
+            label: 'Recibidos',
+            type: 'line',
+            data: [65, 59, 80, 81, 56, 55, 40],
+
+           
+            tension: 0.4,
+            showLine: true,
+            borderWidth: 0.1,
+            fill: 'start'
+          },
+          {
+            backgroundColor: "rgba(195, 40, 96, 0.1)",
+            showLine: true,
+            type: 'line',
+            label: 'Resueltos',
+            data: [50, 70, 45, 89,59, 80, 81],
+            tension:0.4,
+            borderWidth: 0.1,
+            fill: 'start'
+
+
+            
+        }
+        ]
+      },
+      options: {
+        plugins: {
+          filler: {
+            propagate: false,
+          }
+        },
+        interaction: {
+          intersect: false,
+        },
+      responsive: true,
+          scales: {
+            
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+  this.chartPQRS.update()
+  }
+
+  actualizarChartPQRS(){
+
+  }
 
 }

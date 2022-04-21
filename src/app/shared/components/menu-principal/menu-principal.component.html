@@ -46,7 +46,7 @@
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
             fixedTopGap="56" class="shadow3 font1">
             <mat-nav-list class="padding-16 font1">
-                <mat-list-item *ngFor="let page of allPages" [routerLink]="[page.url]">
+                <mat-list-item (click)="snav.toggle()" *ngFor="let page of allPages" [routerLink]="[page.url]">
                     <mat-icon color="primary" *ngIf="page.iconMaterial" matListIcon>{{page.iconMaterial}}</mat-icon>
                     <h3 [class]="'task'" matLine> {{page.title}}</h3>
                     <i *ngIf="page.iconFa" [class]="page.iconFa + ' primary'" matListIcon></i>

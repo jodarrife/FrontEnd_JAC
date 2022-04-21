@@ -15,13 +15,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LoginComponent } from './components/login/login.component';
+import { BarrioComponent } from './components/barrios/pages/barrio/barrio.component';
+import { JuntasVisitaComponent } from './components/juntas/juntas-visita/juntas-visita.component';
+import { JuntasAdminComponent } from './components/juntas/juntas-admin/juntas-admin.component';
+import { JuntasHabitanteComponent } from './components/juntas/juntas-habitante/juntas-habitante.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuPrincipalComponent,
-    LoginComponent
+    LoginComponent,
+    BarrioComponent,
+    JuntasVisitaComponent,
+    JuntasAdminComponent,
+    JuntasHabitanteComponent
   ],
   imports: [
     BrowserModule,
