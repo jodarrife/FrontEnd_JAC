@@ -15,10 +15,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LoginComponent } from './components/login/login.component';
-import { BarrioComponent } from './components/barrios/pages/barrio/barrio.component';
+import { BarrioComponent } from './components/Roladministrador/barrios/pages/barrio/barrio.component';
 import { JuntasVisitaComponent } from './components/juntas/juntas-visita/juntas-visita.component';
 import { JuntasAdminComponent } from './components/juntas/juntas-admin/juntas-admin.component';
 import { JuntasHabitanteComponent } from './components/juntas/juntas-habitante/juntas-habitante.component';
+import { AdministradorListComponent } from './components/Roladministrador/administradores/pages/administrador-list/administrador-list.component';
+import { DepatamentosComponent } from './components/Roladministrador/depatamentos/depatamentos.component';
+import { ComunasComponent } from './components/Roladministrador/comunas/comunas.component';
+import { AdministradoresComponent } from './components/Roladministrador/administradores/administradores.component';
+import { BarriosComponent } from './components/Roladministrador/barrios/barrios.component';
 
 
 @NgModule({
@@ -26,10 +31,10 @@ import { JuntasHabitanteComponent } from './components/juntas/juntas-habitante/j
     AppComponent,
     MenuPrincipalComponent,
     LoginComponent,
-    BarrioComponent,
-    JuntasVisitaComponent,
-    JuntasAdminComponent,
-    JuntasHabitanteComponent
+    BarriosComponent,
+    AdministradoresComponent,
+    DepatamentosComponent,
+    ComunasComponent
   ],
   imports: [
     BrowserModule,

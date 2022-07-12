@@ -41,36 +41,42 @@ export class MenuPrincipalComponent implements OnInit {
       iconFa: null
     },
     {
-      title: 'JAC',
-      url: '/JAC',
+      title: 'Administradores',
+      url: '/RolAdminA',
+      iconMaterial: null,
+      iconFa: 'fas fa-city'
+    },
+    {
+      title: 'Departamentos',
+      url: '/RolAdminD',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },
     {
       title: 'Comunas',
-      url: '/comunas',
+      url: '/RolAdminC',
       iconMaterial: null,
       iconFa: 'fas fa-city'
+    },
+    {
+      title: 'Presidentes Comunales',
+      url: '/RolAdmin',
+      iconMaterial: null,
+      iconFa: 'fas fa-user-shield'
     },
     {
       title: 'Barrios',
-      url: '/barrios',
+      url: '/RolAdminB',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },
     {
-      title: 'Las JAC',
-      url: '/junta',
+      title: 'JAC',
+      url: '/JAC',
       iconMaterial: null,
       iconFa: 'fas fa-user-shield'
     },
-      {
-      title: 'Sobre Nosotros',
-      url: '/junta',
-      iconMaterial: null,
-      iconFa: 'fas fa-user-shield'
-    },
-
+      
     {
       title: 'miembroJAC_Pages',
       url: '/home/dashboard',

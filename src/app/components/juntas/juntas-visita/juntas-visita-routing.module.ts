@@ -6,7 +6,7 @@ const routes: Routes = [
   { path: '', component: JuntasVisitaComponent ,redirectTo: 'junta'},
   { path: 'junta', loadChildren: () => import('./pages/junta/junta.module').then(m => m.JuntaModule) },
   { path: 'cargos', loadChildren: () => import('./pages/cargos-list/cargos-list.module').then(m => m.CargosListModule) },
-  { path: 'detalle', loadChildren: () => import('./pages//cargo/cargo.module').then(m => m.CargoModule) },
+  { path: 'detalle', loadChildren: () => import('./pages/cargo/cargo.module').then(m => m.CargoModule) },
 
 ];
 @NgModule({
