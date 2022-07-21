@@ -25,6 +25,7 @@ import { ComunasComponent } from './components/Roladministrador/comunas/comunas.
 import { AdministradoresComponent } from './components/Roladministrador/administradores/administradores.component';
 import { BarriosComponent } from './components/Roladministrador/barrios/barrios.component';
 import { DepartamentoDetalleComponent } from './components/Roladministrador/depatamentos/pages/departamento-detalle/departamento-detalle.component';
+import { CiudadComponent } from './components/Roladministrador/ciudad/ciudad.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { DepartamentoDetalleComponent } from './components/Roladministrador/depa
     AdministradoresComponent,
     DepatamentosComponent,
     ComunasComponent,
-    DepartamentoDetalleComponent
+    DepartamentoDetalleComponent,
+    CiudadComponent
   ],
   imports: [
     BrowserModule,

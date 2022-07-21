@@ -53,6 +53,12 @@ export class MenuPrincipalComponent implements OnInit {
       iconFa: 'fas fa-city'
     },
     {
+      title: 'Ciudad',
+      url: '/RolAdminE',
+      iconMaterial: null,
+      iconFa: 'fas fa-city'
+    },
+    {
       title: 'Comunas',
       url: '/RolAdminC',
       iconMaterial: null,
