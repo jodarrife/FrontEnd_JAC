@@ -1,0 +1,46 @@
+<body >
+    <div class="font1">
+        <div class="boxContainer">
+            <div class="infoContainer">
+                <mat-card class="shadow3 borde-radio-8 tamContenedor">
+                    <!-- CABECERA -->
+                    <mat-card-header class="row center-xs">
+                        <mat-card-title class="trunc-1 font1 text-28 margin-bottom-0" ><b>AGREGAR ADMINISTRADOR</b></mat-card-title>
+                        <mat-card-subtitle class="margin-bottom-1 font1 text-13">ingrese sus credenciales</mat-card-subtitle>
+                    </mat-card-header>
+                    <!-- TEXTOS -->
+                    <mat-dialog-content>
+                        <div class="row center-xs font1">
+                            <mat-form-field appearance="outline">
+                                <mat-label class="font1" >Ingresar Nombres(*)</mat-label>
+                                <input  matInput class="font1"  >
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label class="font1" >Ingresar Apellidos(*)</mat-label>
+                                <input  matInput class="font1"  >
+                            </mat-form-field>
+                        </div>
+
+                    </mat-dialog-content>
+                    <!-- BOTOONES -->
+                    <div class="row center-xs">
+                        <div class="col-xs">
+                            <button mat-flat-button type="submit" color="primary" class="btn font1 text-20"><b>LOGIN</b></button>
+                        </div>
+                        <div class="row margin-0 padding-10 font1">
+                            <span>¿No tienes cuenta? </span>
+                            <b [routerLink]="['/authentication/registro']">Registrate</b>
+                        </div>
+    
+    
+                    </div>
+                </mat-card>
+                <br>
+            </div>
+            <!-- IMAGEN -->
+            <img class="imageContainer borde-radio-15" src="../../../../../assets/svg/login.svg" alt="">
+    
+        </div>
+    </div>
+    
+</body>
