@@ -4,9 +4,10 @@ import { DepartamentosModule } from './departamentos.module';
 import { DepatamentosComponent } from './depatamentos.component';
 
 const routes: Routes = [
-  { path: '', component: DepatamentosComponent ,redirectTo: 'List-Departamentos'},
+  //{ path: '', component: DepatamentosComponent ,redirectTo: 'List-Departamentos'},
   { path: 'Departamento', loadChildren: () => import('./pages/departamento/departamento.module').then(m => m.DepartamentoModule) },
-  { path: 'List-Departamentos', loadChildren: () => import('./pages/departamento-list/departamento-list.module').then(m => m.DepartamentoListModule) },
+  { path: '', loadChildren: () => import('./pages/departamento-list/departamento-list.module').then(m => m.DepartamentoListModule) },
+  { path: 'Detalle-Departamentos', loadChildren: () => import('./pages/departamento-detalle/departamento-detalle.module').then(m => m.DepartamentoDetalleModule) },
 ];
 
 @NgModule({
