@@ -8,7 +8,7 @@ import { DepartamentoListRoutingModule } from './departamento-list-routing.modul
   declarations: [],
   imports: [
     CommonModule,
-    DepartamentoListRoutingModule
+    DepartamentoListRoutingModule 
   ]
 })
 export class DepartamentoListModule { }

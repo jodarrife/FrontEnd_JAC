@@ -14,8 +14,8 @@ export class DepartamentoListComponent implements OnInit {
   //Variable
   departamentos: any[]=[
     {departamentoId: 1, nombreDepartamento: "Cesar"},
-    {departamentoId: 1, nombreDepartamento: "prueba"},
-    {departamentoId: 1, nombreDepartamento: "esPrueba"},
+    {departamentoId: 2, nombreDepartamento: "prueba"},
+    {departamentoId: 3, nombreDepartamento: "esPrueba"},
   ];
 
   constructor(

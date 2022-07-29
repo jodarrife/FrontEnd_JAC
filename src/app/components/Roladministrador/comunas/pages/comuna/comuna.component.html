@@ -1,1 +1,59 @@
-<p>comuna works!</p>
+<form [formGroup]="formularioComuna" (ngSubmit)="guardar()" (keyup.enter)="guardar()" autocomplete="on">
+
+    <div class="row center-xs">
+      <h4>{{datosEntrada?.titulo}} Departamento</h4>
+    </div>
+  
+    <mat-dialog-content>
+      <div class="row center-xs">
+        <mat-form-field appearance="fill">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option value="option0">None</mat-option>
+            <mat-option value="option1">Cesar</mat-option>
+            <mat-option value="option2">Otro</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <span class="text-danger ml-2"
+          *ngIf="formularioComuna.get('departamento')?.hasError('required') 
+          && formularioComuna.get('departamento')?.touched">
+          El departamento <strong>es requerido</strong>
+        </span>
+  
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput 
+          placeholder="Nombre" 
+          formControlName="nombre">
+        </mat-form-field>
+  
+        <span class="text-danger ml-2"
+          *ngIf="formularioComuna.get('nombre')?.hasError('required') 
+          && formularioComuna.get('nombre')?.touched">
+          El nombre <strong>es requerido</strong>
+        </span>
+  
+      </div>
+    </mat-dialog-content>
+  
+    <div class=" form-group row center-xs">
+      <div class="col-xs">
+        <button mat-flat-button 
+        (click)="cancelar()" 
+        type="button" 
+        color="warn">Retroceder</button>
+      </div>
+  
+      <div class="col-xs">
+        <button mat-flat-button 
+        (click)="guardar()" 
+        type="submit" 
+        color="primary"
+        [disabled]="formularioComuna.invalid"
+        >Guardar</button>
+      </div>
+    </div>
+  
+  </form>

@@ -1,23 +1,23 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Comuna } from 'src/app/models/comuna';
+import { Ciudad } from 'src/app/models/ciudad';
 
 @Component({
-  selector: 'app-comuna',
-  templateUrl: './comuna.component.html',
-  styleUrls: ['./comuna.component.scss']
+  selector: 'app-ciudad',
+  templateUrl: './ciudad.component.html',
+  styleUrls: ['./ciudad.component.scss']
 })
-export class ComunaComponent implements OnInit {
+export class CiudadComponent implements OnInit {
 
-
+  
   //Variables 
   selected = 'option0';
 
   constructor( 
     //private comunaService:ComunaService, 
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<ComunaComponent>, 
+    public dialogRef: MatDialogRef<CiudadComponent>, 
     @Inject(MAT_DIALOG_DATA) public datosEntrada: any
     ) {
      
@@ -26,11 +26,11 @@ export class ComunaComponent implements OnInit {
 
    ngOnInit(): void {
     //this.formularioCiudad.controls['departamento'].setValue(this.datosEntrada?.comuna?.departamentoId || null)
-    this.formularioComuna.controls['nombre'].setValue(this.datosEntrada?.comuna?.nombre || null);
+    this.formularioCiudad.controls['nombre'].setValue(this.datosEntrada?.comuna?.nombre || null);
   }
 
    //estructura para usar formulario reactivo
-   formularioComuna = new FormGroup({
+   formularioCiudad = new FormGroup({
     //departamento: new FormControl(null,[Validators.required]),
     nombre: new FormControl(null, [Validators.required, Validators.maxLength(40)]),
   });
@@ -43,14 +43,14 @@ export class ComunaComponent implements OnInit {
   //al confirmar el registro
   guardar(): void {
    
-    const comunaAux: Comuna={
-      comunaId:1,
-      nombreComuna: this.formularioComuna.value.nombre,
+    const ciudadAux: Ciudad={
       ciudadId: 1,
+      nombreCiudad: this.formularioCiudad.value.nombre,
+      departamentoId:1
     }
-    if (this.formularioComuna.invalid) {
+    if (this.formularioCiudad.invalid) {
       return;
     }
-    this.dialogRef.close(this.formularioComuna.value);
+    this.dialogRef.close(this.formularioCiudad.value);
   }
 }
