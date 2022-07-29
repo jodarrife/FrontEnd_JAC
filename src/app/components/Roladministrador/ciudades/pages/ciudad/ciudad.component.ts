@@ -26,7 +26,7 @@ export class CiudadComponent implements OnInit {
 
    ngOnInit(): void {
     //this.formularioCiudad.controls['departamento'].setValue(this.datosEntrada?.comuna?.departamentoId || null)
-    this.formularioCiudad.controls['nombre'].setValue(this.datosEntrada?.comuna?.nombre || null);
+    this.formularioCiudad.controls['nombre'].setValue(this.datosEntrada?.ciudad?.nombre || null);
   }
 
    //estructura para usar formulario reactivo
