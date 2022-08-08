@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { MatStepperModule } from '@angular/material/stepper';
+
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -45,7 +45,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 const MaterialComponents = [
@@ -86,6 +86,7 @@ const MaterialComponents = [
   FormsModule,
   ReactiveFormsModule,
   RouterModule,
+  MatStepperModule,
   MatCardModule,
   MatSelectModule,
   MatButtonModule,

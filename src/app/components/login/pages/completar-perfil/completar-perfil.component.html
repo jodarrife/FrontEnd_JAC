@@ -1,1 +1,327 @@
-<p>completar-perfil works!</p>
+<div class="contenedor">
+
+    <div class="formulario shadow3">
+        <mat-card class="">
+            <mat-card-header>
+                <mat-card-title><b>COMPLETE SU PERFIL</b>
+                </mat-card-title>
+                <mat-card-subtitle>ingrese su información
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-dialog-content>
+                <div class="">
+                    <mat-stepper #stepper>
+                        <mat-step [stepControl]="formularioPrimero" errorMessage="Name is required.">
+                            <form [formGroup]="formularioPrimero">
+                                <ng-template matStepLabel>Informacion personal</ng-template>
+                                <!-----------------------------------TIPO DOCUMENTO-->
+                                <div class="row bottom-xs">
+                                    <div class="col-xs-6">
+                                        <div class="box">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Tipo de Documento</mat-label>
+                                                <mat-select placeholder="TipoDocumento" formControlName="tipoDocumento">
+                                                    <mat-option value="cedulaCiudadania">Cédula de Ciudadania
+                                                    </mat-option>
+                                                    <mat-option value="tarjetaIdentidad">Tarjeta de Identidad
+                                                    </mat-option>
+                                                    <mat-option value="pasaporte">Pasaporte</mat-option>
+                                                    <mat-option value="cedulaExtranjería">Cédula de Extranjería
+                                                    </mat-option>
+                                                    <mat-option value="tarjetaExtranjería">Tarjeta de Extranjería
+                                                    </mat-option>
+                                                    <mat-option value="nit">NIT</mat-option>
+                                                </mat-select>
+                                                <mat-hint align="start">
+                                                    <span class="text-danger ml-2" *ngIf="formularioPrimero.get('tipoDocumento')?.hasError('required') 
+                            && formularioPrimero.get('tipoDocumento')?.touched">
+                                                        El Tipo de Documento <strong>es requerido</strong>
+                                                    </span>
+                                                </mat-hint>
+                                            </mat-form-field>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="box">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Documento</mat-label>
+                                                <input matInput placeholder="Documento" formControlName="documento">
+                                                <mat-hint align="start">
+                                                    <span class="text-danger ml-2" *ngIf="formularioPrimero.get('documento')?.hasError('required') 
+                            && formularioPrimero.get('documento')?.touched">
+                                                        El documento <strong>es requerido</strong>
+                                                    </span>
+                                                </mat-hint>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-----------------------------------NOMBRE-->
+                                <div class="row bottom-xs">
+                                    <div class="col-xs-6">
+                                        <div class="box">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Primer Nombre</mat-label>
+                                                <input matInput placeholder="Primer Nombre"
+                                                    formControlName="primerNombre">
+                                                <mat-hint align="start">
+                                                    <span class="text-danger ml-2" *ngIf="formularioPrimero.get('primerNombre')?.hasError('required') 
+                  && formularioPrimero.get('primerNombre')?.touched">
+                                                        El nombre <strong>es requerido</strong>
+                                                    </span>
+                                                </mat-hint>
+                                            </mat-form-field>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="box">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Segundo Nombre</mat-label>
+                                                <input matInput placeholder="Segundo Nombre"
+                                                    formControlName="segundoNombre">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-------------------------------------APELLIDOS-->
+                                <div class="row bottom-xs">
+                                    <div class="col-xs-6">
+                                        <div class="box">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Primer Apellido</mat-label>
+                                                <input matInput placeholder="Primer Apellid"
+                                                    formControlName="primerApellido">
+                                                <mat-hint align="start">
+                                                    <span class="text-danger ml-2" *ngIf="formularioPrimero.get('primerApellido')?.hasError('required') 
+                && formularioPrimero.get('primerApellido')?.touched">
+                                                        El Apellido <strong>es requerido</strong>
+                                                    </span>
+                                                </mat-hint>
+                                            </mat-form-field>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="box">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Segundo Apellido</mat-label>
+                                                <input matInput placeholder="Segundo Apellido"
+                                                    formControlName="segundoApellido">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="row bottom-xs">
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <button mat-flat-button type="submit"
+                                                    [routerLink]="['/authentication/login']"
+                                                    class="btn font1 text-20 primary-color colorWh"><b>CANCELAR</b></button>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <button mat-flat-button matStepperNext type="submit"
+                                                    class="btn font1 text-20 primary-color colorWh"><b>SEGUIR</b></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </mat-step>
+                        <mat-step [stepControl]="formularioSegundo" errorMessage="Address is required.">
+                            <form [formGroup]="formularioSegundo">
+
+
+                                <ng-template matStepLabel>Informacion Adicional</ng-template>
+                                <div>
+                                    <div class="row bottom-xs">
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <!-----------------------------------FECHA NACIMIENTO-->
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Fecha de Nacimiento</mat-label>
+                                                    <input matInput [matDatepicker]="picker"
+                                                        formControlName="fechaNacimiento">
+                                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                                    <mat-datepicker-toggle matSuffix [for]="picker">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #picker></mat-datepicker>
+                                                    <mat-hint align="start">
+                                                        <span class="text-danger ml-2" *ngIf="formularioSegundo.get('fechaNacimiento')?.hasError('required') 
+          && formularioSegundo.get('fechaNacimiento')?.touched">
+                                                            La Fecha <strong>es requerido</strong>
+                                                        </span>
+                                                    </mat-hint>
+                                                </mat-form-field>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <!-----------------------------------GENERO-->
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Tipo de Genero</mat-label>
+                                                    <mat-select placeholder="Tipo Genero" formControlName="tipoGenero">
+                                                        <mat-option value="mujer">Mujer</mat-option>
+                                                        <mat-option value="hombre">Hombre</mat-option>
+                                                        <mat-option value="otro">Otro</mat-option>
+                                                    </mat-select>
+                                                    <mat-hint align="start">
+                                                        <span class="text-danger ml-2" *ngIf="formularioSegundo.get('tipoGenero')?.hasError('required') 
+          && formularioSegundo.get('fechatipoGeneroNacimiento')?.touched">
+                                                            La Fecha <strong>es requerido</strong>
+                                                        </span>
+                                                    </mat-hint>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row bottom-xs">
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <!-----------------------------------CORREO-->
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Correo</mat-label>
+                                                    <input matInput placeholder="Correo" formControlName="correo">
+                                                    <mat-hint align="start">
+                                                        <span class="text-danger ml-2" *ngIf="formularioSegundo.get('correo')?.hasError('required') 
+&& formularioSegundo.get('correo')?.touched">
+                                                            El Correo <strong>es requerido</strong>
+                                                        </span>
+                                                    </mat-hint>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <!-----------------------------------TELEFONO-->
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Telefono</mat-label>
+                                                    <input matInput placeholder="Telefono" formControlName="telefono">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row bottom-xs">
+                                        <div class="col-xs-6">
+                                            <div class="box">
+
+                                                <!-----------------------------------BARRIO-->
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Barrio</mat-label>
+                                                    <mat-select placeholder="Barrio" formControlName="barrio">
+                                                        <mat-option value="sam">San</mat-option>
+                                                        <mat-option value="san">12 de</mat-option>
+                                                        <mat-option value="otro">Otro</mat-option>
+                                                    </mat-select>
+                                                    <mat-hint align="start">
+                                                        <span class="text-danger ml-2" *ngIf="formularioSegundo.get('barrio')?.hasError('required') 
+          && formularioSegundo.get('barrio')?.touched">
+                                                            El Correo <strong>es requerido</strong>
+                                                        </span>
+                                                    </mat-hint>
+                                                </mat-form-field>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <!-----------------------------------CONTRASEÑA-->
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Contraseña</mat-label>
+                                                    <input matInput placeholder="Contraseña" formControlName="password">
+                                                    <mat-hint align="start">
+                                                        <span class="text-danger ml-2" *ngIf="formularioSegundo.get('password')?.hasError('required') 
+          && formularioSegundo.get('password')?.touched">
+                                                            La Contraseña <strong>es requerido</strong>
+                                                        </span>
+                                                    </mat-hint>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row bottom-xs">
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <button mat-flat-button type="submit" matStepperPrevious
+                                                    class="btn font1 text-20 primary-color colorWh"><b>VOLVER</b></button>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="box">
+                                                <button mat-flat-button matStepperNext type="submit"
+                                                    class="btn font1 text-20 primary-color colorWh"><b>SEGUIR</b></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </mat-step>
+                        <mat-step>
+
+
+
+                            <ng-template matStepLabel>Terminar Formulario</ng-template>
+                            <p>Confirme los cambios a realizar.</p>
+                            <div>
+                                <div>
+                                    <div class="row bottom-xs">
+                                        <div class="col-xs-3">
+                                            <div class="box">
+                                                <button mat-flat-button type="submit" matStepperPrevious
+                                                    class="btn font1 text-20 primary-color colorWh"><b>VOLVER</b></button>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="box">
+                                                <button mat-flat-button matStepperNext type="submit"
+                                                    class="btn font1 text-20 primary-color colorWh" (click)="stepper.reset()" ><b>RESETEAR</b></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="box">
+                                                <button mat-flat-button  type="submit"
+                                                    class="btn font1 text-20 primary-color colorWh"><b>GUARDAR CAMBIOS</b></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                
+                            </div>
+                        </mat-step>
+                    </mat-stepper>
+                </div>
+            </mat-dialog-content>
+
+            <div class="center-xs">
+                <div class="col-xs padding-top-5 ">
+
+                </div>
+            </div>
+
+        </mat-card>
+
+    </div>
+    <div>
+        <div>
+            <img class="imageContainer borde-radio-15" src="../../../../../assets/svg/registrar_login.svg" alt="">
+        </div>
+    </div>
+</div>
