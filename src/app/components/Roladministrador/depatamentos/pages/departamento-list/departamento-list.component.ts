@@ -38,7 +38,10 @@ export class DepartamentoListComponent implements OnInit {
   
   //MODAL CREAR SERVICE
   modalFormulario() {
-    const dialogRef = this.dialog.open(DepartamentoComponent, { data: { titulo: "Registrar", departamento: null } });
+    const dialogRef = this.dialog.open(DepartamentoComponent, { 
+      width: '30%',
+      data: { titulo: "Registrar", departamento: null }
+      });
     dialogRef.afterClosed().subscribe(departamento => {
       console.log('datos ', departamento);
       if (departamento) {

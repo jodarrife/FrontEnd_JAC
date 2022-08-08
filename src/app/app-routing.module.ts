@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'RolAdminD', loadChildren: () => import('./components/Roladministrador/depatamentos/departamentos.module' ).then(m => m.DepartamentosModule) },
   { path: 'RolAdminE', loadChildren: () => import('./components/Roladministrador/ciudades/ciudades.module' ).then(m => m.CiudadesModule) },
   { path: 'RolAdminF', loadChildren: () => import('./components/Roladministrador/barrios/barrios.module' ).then(m => m.BarriosModule) },
+  { path: 'RolAdminG', loadChildren: () => import('./components/Roladministrador/habitantes/habitantes.module' ).then(m => m.HabitantesModule) },
   { path: 'JAC', loadChildren: () => import('./components/juntas/juntas-visita/juntas-visita.module').then(m => m.JuntasVisitaModule) },
 ];
 @NgModule({

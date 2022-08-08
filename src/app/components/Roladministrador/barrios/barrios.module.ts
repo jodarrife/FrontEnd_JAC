@@ -7,12 +7,12 @@ import { BarrioListComponent } from './pages/barrio-list/barrio-list.component';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { BarrioDetalleComponent } from './pages/barrio-detalle/barrio-detalle.component';
 
-
 @NgModule({
   declarations: [
     BarrioComponent,
     BarrioListComponent,
-    BarrioDetalleComponent
+    BarrioDetalleComponent,
+  
   ],
   imports: [
     CommonModule,

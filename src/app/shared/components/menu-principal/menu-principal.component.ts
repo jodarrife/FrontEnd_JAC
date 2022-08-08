@@ -23,8 +23,8 @@ export class MenuPrincipalComponent implements OnInit {
     this.mobileQuery.addListener(this._mobileQueryListener);
     }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
-    this.user="Admin";
+   
+    
   }
   //Visitante
   public allPages = [
@@ -67,6 +67,12 @@ export class MenuPrincipalComponent implements OnInit {
     {
       title: 'Barrios',
       url: '/RolAdminF',
+      iconMaterial: null,
+      iconFa: 'fas fa-city'
+    },
+    {
+      title: 'Habitantes',
+      url: '/RolAdminG',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },

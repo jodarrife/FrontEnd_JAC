@@ -35,7 +35,9 @@ export class ComunaListComponent implements OnInit {
     
     //MODAL CREAR SERVICE
     modalFormulario() {
-      const dialogRef = this.dialog.open(ComunaComponent, { data: { titulo: "Registrar", comuna: null } });
+      const dialogRef = this.dialog.open(ComunaComponent, { 
+        width: '30%',
+        data: { titulo: "Registrar", comuna: null } });
       dialogRef.afterClosed().subscribe(comuna => {
         console.log('datos ', comuna);
         if (comuna) {

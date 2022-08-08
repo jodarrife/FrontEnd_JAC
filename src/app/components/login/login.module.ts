@@ -6,12 +6,14 @@ import { InicioSesionComponent } from './pages/inicio-sesion/inicio-sesion.compo
 import { RegistrarseComponent } from './pages/registrarse/registrarse.component';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { RecuperarComponent } from './pages/recuperar/recuperar.component';
+import { CompletarPerfilComponent } from './pages/completar-perfil/completar-perfil.component';
 
 @NgModule({
   declarations: [
     InicioSesionComponent,
     RegistrarseComponent,
     RecuperarComponent,
+    CompletarPerfilComponent,
 
   ],
   imports: [

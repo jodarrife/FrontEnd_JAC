@@ -1,7 +1,7 @@
 <form [formGroup]="formulario" (ngSubmit)="guardar()" (keyup.enter)="guardar()" autocomplete="on">
 
   <div class="row center-xs">
-    <h4>{{datosEntrada?.titulo}} Departamento</h4>
+    <h1>{{datosEntrada?.titulo}} Departamento</h1>
   </div>
 
   <mat-dialog-content>
@@ -27,7 +27,7 @@
       <button mat-flat-button 
       (click)="cancelar()" 
       type="button" 
-      color="warn">Retroceder</button>
+      color="warn">Cancelar</button>
     </div>
 
     <div class="col-xs">

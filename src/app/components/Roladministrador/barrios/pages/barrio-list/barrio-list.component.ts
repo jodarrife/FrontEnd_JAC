@@ -36,7 +36,9 @@ export class BarrioListComponent implements OnInit {
     
     //MODAL CREAR SERVICE
     modalFormulario() {
-      const dialogRef = this.dialog.open(BarrioComponent, { data: { titulo: "Registrar", barrio: null } });
+      const dialogRef = this.dialog.open(BarrioComponent, { 
+        width: '30%',
+        data: { titulo: "Registrar", barrio: null } });
       dialogRef.afterClosed().subscribe(barrio => {
         console.log('datos ', barrio);
         if (barrio) {

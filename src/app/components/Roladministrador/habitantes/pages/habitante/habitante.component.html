@@ -1,0 +1,183 @@
+<form [formGroup]="formularioHabitante" (ngSubmit)="guardar()" (keyup.enter)="guardar()" autocomplete="on">
+
+  <div class="row center-xs">
+    <h1>{{datosEntrada?.titulo}} Habitante</h1>
+  </div>
+
+  <mat-dialog-content>
+    <div class="row center-xs">
+      <!-----------------------------------TIPO DOCUMENTO-->
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo de Documento</mat-label>
+        <mat-select placeholder="TipoDocumento" formControlName="tipoDocumento">
+          <mat-option value="cedulaCiudadania">Cédula de Ciudadania</mat-option>
+          <mat-option value="tarjetaIdentidad">Tarjeta de Identidad</mat-option>
+          <mat-option value="pasaporte">Pasaporte</mat-option>
+          <mat-option value="cedulaExtranjería">Cédula de Extranjería</mat-option>
+          <mat-option value="tarjetaExtranjería">Tarjeta de Extranjería</mat-option>
+          <mat-option value="nit">NIT</mat-option>
+        </mat-select>
+        <mat-hint align="start">
+          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('tipoDocumento')?.hasError('required') 
+                && formularioHabitante.get('tipoDocumento')?.touched">
+            El Tipo de Documento <strong>es requerido</strong>
+          </span>
+        </mat-hint>
+      </mat-form-field>
+      <!-----------------------------------DOCUMENTO-->
+      <mat-form-field appearance="outline">
+        <mat-label>Documento</mat-label>
+        <input matInput placeholder="Documento" formControlName="documento">
+        <mat-hint align="start">
+          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('documento')?.hasError('required') 
+                && formularioHabitante.get('documento')?.touched">
+            El documento <strong>es requerido</strong>
+          </span>
+        </mat-hint>
+      </mat-form-field>
+
+      <!-----------------------------------NOMBRE-->
+      <div class="row bottom-xs">
+        <div class="col-xs-6">
+          <div class="box">
+            <mat-form-field appearance="outline">
+              <mat-label>Primer Nombre</mat-label>
+              <input matInput placeholder="Primer Nombre" formControlName="primerNombre">
+              <mat-hint align="start">
+                <span class="text-danger ml-2" *ngIf="formularioHabitante.get('primerNombre')?.hasError('required') 
+                  && formularioHabitante.get('primerNombre')?.touched">
+                  El nombre <strong>es requerido</strong>
+                </span>
+              </mat-hint>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="box">
+            <mat-form-field appearance="outline">
+              <mat-label>Segundo Nombre</mat-label>
+              <input matInput placeholder="Segundo Nombre" formControlName="segundoNombre" >
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <!-------------------------------------APELLIDOS-->
+      <div class="row bottom-xs">
+        <div class="col-xs-6">
+          <div class="box">
+            <mat-form-field appearance="outline">
+              <mat-label>Primer Apellido</mat-label>
+              <input matInput placeholder="Primer Apellid" formControlName="primerApellido">
+              <mat-hint align="start">
+                <span class="text-danger ml-2" *ngIf="formularioHabitante.get('primerApellido')?.hasError('required') 
+                && formularioHabitante.get('primerApellido')?.touched">
+                  El Apellido <strong>es requerido</strong>
+                </span>
+              </mat-hint>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="box">
+            <mat-form-field appearance="outline">
+              <mat-label>Segundo Apellido</mat-label>
+              <input matInput placeholder="Segundo Apellido" formControlName="segundoApellido" >
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <!-----------------------------------FECHA NACIMIENTO-->
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-hint align="start">
+          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('fechaNacimiento')?.hasError('required') 
+          && formularioHabitante.get('fechaNacimiento')?.touched">
+            La Fecha <strong>es requerido</strong>
+          </span>
+        </mat-hint>
+      </mat-form-field>
+
+      <!-----------------------------------GENERO-->
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo de Genero</mat-label>
+        <mat-select placeholder="Tipo Genero" formControlName="tipoGenero">
+          <mat-option value="mujer">Mujer</mat-option>
+          <mat-option value="hombre">Hombre</mat-option>
+          <mat-option value="otro">Otro</mat-option>
+        </mat-select>
+        <mat-hint align="start">
+          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('tipoGenero')?.hasError('required') 
+          && formularioHabitante.get('fechatipoGeneroNacimiento')?.touched">
+            La Fecha <strong>es requerido</strong>
+          </span>
+        </mat-hint>
+      </mat-form-field>
+
+      <!-----------------------------------CORREO-->
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input matInput placeholder="Correo" formControlName="correo">
+        <mat-hint align="start">
+          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('correo')?.hasError('required') 
+            && formularioHabitante.get('correo')?.touched">
+            El Correo <strong>es requerido</strong>
+          </span>
+        </mat-hint>
+      </mat-form-field>
+
+      <!-----------------------------------TELEFONO-->
+      <mat-form-field appearance="outline">
+        <mat-label>Telefono</mat-label>
+        <input matInput placeholder="Telefono" formControlName="telefono" >
+      </mat-form-field>
+      <!-----------------------------------BARRIO-->
+      <mat-form-field appearance="outline">
+        <mat-label>Barrio</mat-label>
+        <mat-select placeholder="Barrio" formControlName="barrio">
+          <mat-option value="sam">San</mat-option>
+          <mat-option value="san">12 de</mat-option>
+          <mat-option value="otro">Otro</mat-option>
+        </mat-select>
+        <mat-hint align="start">
+          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('barrio')?.hasError('required') 
+          && formularioHabitante.get('barrio')?.touched">
+            El Correo <strong>es requerido</strong>
+          </span>
+        </mat-hint>
+      </mat-form-field>
+
+      <!-----------------------------------CONTRASEÑA-->
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput placeholder="Contraseña" formControlName="password">
+        <mat-hint align="start">
+          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('password')?.hasError('required') 
+          && formularioHabitante.get('password')?.touched">
+            La Contraseña <strong>es requerido</strong>
+          </span>
+        </mat-hint>
+      </mat-form-field>
+
+
+    </div>
+  </mat-dialog-content>
+
+
+  <div class=" form-group row center-xs">
+    <div class="col-xs">
+      <button mat-flat-button (click)="cancelar()" type="button" color="warn">Cancelar</button>
+    </div>
+
+    <div class="col-xs">
+      <button mat-flat-button (click)="guardar()" type="submit" color="primary"
+        [disabled]="formularioHabitante.invalid">Guardar</button>
+    </div>
+  </div>
+
+</form>

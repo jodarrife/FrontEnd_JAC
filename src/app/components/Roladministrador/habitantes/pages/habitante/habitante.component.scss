@@ -1,0 +1,71 @@
+body {
+  height: 70vh;
+  width: 93em;
+}
+
+.boxContainer {
+  height: 34em;
+  width: 70em;
+  margin: 5em auto;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.infoContainer {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+.imageContainer {
+  padding: 2rem;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1000px) {
+  .boxContainer {
+    width: 70%;
+    margin-top: 3rem;
+  }
+  .infoContainer {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .imageContainer {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .boxContainer {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .boxContainer {
+    height: 90%;
+  }
+
+  .infoContainer > p {
+    margin: 0;
+  }
+}
+
+.btn {
+  width: 90%;
+  height: 3.125rem;
+  font-size: 1em;
+  color: white;
+}
+
+.box {
+    width: 100px;
+    height: auto;
+}
