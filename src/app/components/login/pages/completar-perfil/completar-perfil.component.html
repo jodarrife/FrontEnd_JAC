@@ -12,7 +12,7 @@
             <mat-dialog-content>
                 <div class="">
                     <mat-stepper #stepper>
-                        <mat-step [stepControl]="formularioPrimero" errorMessage="Name is required.">
+                        <mat-step [stepControl]="formularioPrimero" errorMessage="Info is required.">
                             <form [formGroup]="formularioPrimero">
                                 <ng-template matStepLabel>Informacion personal</ng-template>
                                 <!-----------------------------------TIPO DOCUMENTO-->
@@ -121,14 +121,14 @@
                                             <div class="box">
                                                 <button mat-flat-button type="submit"
                                                     [routerLink]="['/authentication/login']"
-                                                    class="btn font1 text-20 primary-color colorWh"><b>CANCELAR</b></button>
+                                                    class="btn font1 text-15 primary-color colorWh"><b>CANCELAR</b></button>
 
                                             </div>
                                         </div>
                                         <div class="col-xs-6">
                                             <div class="box">
                                                 <button mat-flat-button matStepperNext type="submit"
-                                                    class="btn font1 text-20 primary-color colorWh"><b>SEGUIR</b></button>
+                                                    class="btn font1 text-15 primary-color colorWh"><b>SEGUIR</b></button>
                                             </div>
                                         </div>
                                     </div>
@@ -257,14 +257,14 @@
                                         <div class="col-xs-6">
                                             <div class="box">
                                                 <button mat-flat-button type="submit" matStepperPrevious
-                                                    class="btn font1 text-20 primary-color colorWh"><b>VOLVER</b></button>
+                                                    class="btn font1 text-15 primary-color colorWh"><b>VOLVER</b></button>
 
                                             </div>
                                         </div>
                                         <div class="col-xs-6">
                                             <div class="box">
                                                 <button mat-flat-button matStepperNext type="submit"
-                                                    class="btn font1 text-20 primary-color colorWh"><b>SEGUIR</b></button>
+                                                    class="btn font1 text-15 primary-color colorWh"><b>SEGUIR</b></button>
                                             </div>
                                         </div>
                                     </div>
@@ -284,20 +284,20 @@
                                         <div class="col-xs-3">
                                             <div class="box">
                                                 <button mat-flat-button type="submit" matStepperPrevious
-                                                    class="btn font1 text-20 primary-color colorWh"><b>VOLVER</b></button>
+                                                    class="btn font1 text-15 primary-color colorWh"><b>VOLVER</b></button>
 
                                             </div>
                                         </div>
                                         <div class="col-xs-3">
                                             <div class="box">
                                                 <button mat-flat-button matStepperNext type="submit"
-                                                    class="btn font1 text-20 primary-color colorWh" (click)="stepper.reset()" ><b>RESETEAR</b></button>
+                                                    class="btn font1 text-15 primary-color colorWh" (click)="stepper.reset()" ><b>RESETEAR</b></button>
                                             </div>
                                         </div>
                                         <div class="col-xs-3">
                                             <div class="box">
                                                 <button mat-flat-button  type="submit"
-                                                    class="btn font1 text-20 primary-color colorWh"><b>GUARDAR CAMBIOS</b></button>
+                                                    class="btn font1 text-15 primary-color colorWh"><b>GUARDAR</b></button>
                                             </div>
                                         </div>
                                     </div>

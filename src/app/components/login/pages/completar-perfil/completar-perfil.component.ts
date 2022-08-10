@@ -44,15 +44,15 @@ export class CompletarPerfilComponent implements OnInit {
       Validators.maxLength(40),
     ]),
     segundoApellido: new FormControl(null, [Validators.maxLength(40)]),
-    fechaNacimiento: new FormControl(null, [
-      Validators.required,
-      Validators.maxLength(40),
-    ]),
+    
    
   });
    //estructura para usar formulario reactivo
    formularioSegundo = new FormGroup({
-   
+    fechaNacimiento: new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(40),
+    ]),
     tipoGenero: new FormControl(null, [
       Validators.required,
       Validators.maxLength(40),

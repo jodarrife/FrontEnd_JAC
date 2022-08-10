@@ -1,57 +1,55 @@
-<body>
-    <div class="font1">
-        <div class="boxContainer">
-            <div class="infoContainer">
-                <mat-card class="shadow3 borde-radio-8 tamContenedor">
-                    <mat-card-header class="row center-xs">
-                        <mat-card-title class="trunc-1 font1 text-28 margin-bottom-0"><b>CREAR USUARIO</b>
-                        </mat-card-title>
-                        <mat-card-subtitle class="margin-bottom-1 font1 text-13">ingrese las credenciales
-                        </mat-card-subtitle>
-                    </mat-card-header>
+<div class="contenedor">
 
-                    <mat-dialog-content>
-                        <div class="row center-xs font1">
-                            <mat-form-field appearance="outline">
-                                <mat-label class="font1">Enter your Email(*)</mat-label>
-                                <input matInput class="font1" >
-                            </mat-form-field>
-                            <mat-form-field appearance="outline">
-                                <mat-label class="font1">Enter your password(*)</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'">
-                                <button mat-icon-button matSuffix (click)="hide = !hide"
-                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                </button>
-                            </mat-form-field>
-                            <mat-form-field appearance="outline">
-                                <mat-label class="font1">confirm password(*)</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'">
-                                <button mat-icon-button matSuffix (click)="hide = !hide"
-                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                </button>
-                            </mat-form-field>
+    <div class="formulario shadow3">
+        <mat-card class="shadow3 borde-radio-8 tamContenedor">
+            <mat-card-header class="row center-xs">
+                <mat-card-title class="trunc-1 font1 text-28 margin-bottom-0"><b>CREAR USUARIO</b>
+                </mat-card-title>
+                <mat-card-subtitle class="margin-bottom-1 font1 text-13 padding-top-8">ingrese las credenciales
+                </mat-card-subtitle>
+            </mat-card-header>
 
-                        </div>
-                    </mat-dialog-content>
+            <mat-dialog-content>
+                <div class="row center-xs font1">
+                    <mat-form-field appearance="outline">
+                        <mat-label class="font1">Enter your Email(*)</mat-label>
+                        <input matInput class="font1" >
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label class="font1">Enter your password(*)</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label class="font1">confirm password(*)</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
 
-                    <div class="center-xs">
-                        <div class="col-xs">
-                            <button mat-flat-button type="submit" color="primary"
-                                class="btn font1 text-20" [routerLink]="['/authentication/completarPerfil']" ><b>REGISTRARSE</b></button>
-                        </div>
-                        <div class="col-xs padding-top-15 ">
-                            <button mat-flat-button type="submit" [routerLink]="['/authentication/login']" class="btn font1 text-20 primary-color-dark"><b>CANCELAR</b></button>
-                        </div>
-                    </div>
+                </div>
+            </mat-dialog-content>
 
-                </mat-card>
-                <br>
+            <div class="center-xs">
+                <div class="col-xs">
+                    <button mat-flat-button type="submit" color="primary"
+                        class="btn font1 text-20" [routerLink]="['/authentication/completarPerfil']" ><b>REGISTRARSE</b></button>
+                </div>
+                <div class="col-xs padding-top-15 ">
+                    <button mat-flat-button type="submit" [routerLink]="['/authentication/login']" class="btn font1 text-20 primary-color-dark"><b>CANCELAR</b></button>
+                </div>
             </div>
-            <img class="imageContainer borde-radio-15" src="../../../../../assets/svg/registrar_login.svg" alt="">
 
+        </mat-card>
+    </div>
+    <div>
+        <div>
+            <img class="imageContainer borde-radio-15" src="../../../../../assets/svg/registrar_login.svg" alt="">
         </div>
     </div>
-
-</body>
+</div>
