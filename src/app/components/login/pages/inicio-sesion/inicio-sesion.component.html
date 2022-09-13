@@ -1,41 +1,60 @@
 <div class="contenedor">
-
+    
     <div class="formulario shadow3">
         <mat-card class="shadow3 borde-radio-8 paddind-16">
             <mat-card-header class="row center-xs padding-top-15">
-                <mat-card-title class="trunc-1 font1 text-28 margin-bottom-0" ><b>INICIO SESION</b></mat-card-title>
-                
+                <mat-card-title class="trunc-1 font1 text-28 margin-bottom-0"><b>INICIO SESION</b></mat-card-title>
+
                 <br>
-                <mat-card-subtitle class="margin-bottom-1 font1 text-13 padding-top-8">ingrese sus credenciales</mat-card-subtitle>
-                
+                <mat-card-subtitle class="margin-bottom-1 font1 text-13 padding-top-8">ingrese sus credenciales
+                </mat-card-subtitle>
+
             </mat-card-header>
+            <app-loading></app-loading>
+            <form [formGroup]="formulario" (ngSubmit)="inicioSesion()">
+                <mat-dialog-content>
+                    <div class="row center-xs font1 ">
+                        <mat-form-field appearance="outline">
+                            <mat-label class="font1">Enter your Email(*)</mat-label>
+                            <input matInput placeholder="correo" formControlName="correo" class="font1">
+                            <mat-hint align="start">
+                                <span class="text-danger ml-2" *ngIf="formulario.get('correo')?.hasError('required') 
+                                    && formulario.get('correo')?.touched">
+                                    El Email <strong>es requerido</strong>
+                                </span>
+                            </mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label class="font1">Enter your password(*)</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-hint align="start">
+                                <span class="text-danger ml-2" *ngIf="formulario.get('password')?.hasError('required') 
+                                    && formulario.get('password')?.touched">
+                                    El password <strong>es requerido</strong>
+                                </span>
+                            </mat-hint>
+                        </mat-form-field>
 
-            <mat-dialog-content >
-                <div class="row center-xs font1 ">
-                    <mat-form-field appearance="outline">
-                        <mat-label class="font1" >Enter your Email(*)</mat-label>
-                        <input  matInput class="font1"  >
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label class="font1" >Enter your password(*)</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'">
-                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
-                    </mat-form-field>
+                    </div>
 
-                </div>
+                    <div class="row center-xs margin-0 padding-5 font1 ">
+                        <span>¿Se te olvido la Contraseña? </span>
+                        <b [routerLink]="['/authentication/recuperarPassword']">Click Aquí</b>
+                    </div>
 
-                <div class="row center-xs margin-0 padding-5 font1 ">
-                    <span>¿Se te olvido la Contraseña? </span>
-                    <b [routerLink]="['/authentication/recuperarPassword']">Click Aquí</b>
-                </div>
+                </mat-dialog-content>
+            </form>
 
-            </mat-dialog-content>
 
             <div class="row center-xs">
                 <div class="col-xs">
-                    <button mat-flat-button type="submit" color="primary" class="btn font1 text-20"><b>LOGIN</b></button>
+                    <button mat-flat-button type="submit" color="primary" class="btn font1 text-20"
+                        (click)="inicioSesion()"
+                        [disabled]="formulario.invalid"><b>INICIO SESION</b></button>
                 </div>
                 <div class="row margin-0 padding-10 font1">
                     <span>¿No tienes cuenta? </span>
@@ -46,7 +65,7 @@
             </div>
         </mat-card>
 
-           
+
 
     </div>
     <div>

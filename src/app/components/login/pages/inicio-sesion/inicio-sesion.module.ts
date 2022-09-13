@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InicioSesionRoutingModule } from './inicio-sesion-routing.module';
 import { InicioSesionComponent } from './inicio-sesion.component';
+import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 
 
 @NgModule({
@@ -11,7 +12,7 @@ import { InicioSesionComponent } from './inicio-sesion.component';
   ],
   imports: [
     CommonModule,
-    InicioSesionRoutingModule
+    InicioSesionRoutingModule,
   ]
 })
 export class InicioSesionModule { }

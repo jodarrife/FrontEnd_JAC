@@ -3,13 +3,13 @@
     <mat-card-title>DEPARTAMENTOS</mat-card-title>
   </div>
 
+  <h4 *ngIf="listDepartamentos.length === 0 && loading === false" >No hay Departamentos para mostrar </h4>
   <div class="row margin-0 start-xs padding-16">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 padding-10" *ngFor="let departamento of departamentos" >
-      <mat-card class="shadow1 borde-radio-10 cursor-pointer">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 padding-10" *ngFor="let departamento of listDepartamentos" >
+      <mat-card routerLink="/RolAdminDepartamento/verDepartamento/{{departamento.id}}" class="shadow1 borde-radio-10 cursor-pointer">
         <mat-card-header >
           <div mat-card-avatar class="comunasimage"></div>
-
-          <mat-card-title class="trunc-1">{{departamento?.nombreDepartamento}}</mat-card-title>
+          <mat-card-title class="trunc-1">{{departamento?.nombre}}</mat-card-title>
           <mat-card-subtitle class="margin-bottom-0">Nombre del departamento</mat-card-subtitle>
         </mat-card-header>
       </mat-card>

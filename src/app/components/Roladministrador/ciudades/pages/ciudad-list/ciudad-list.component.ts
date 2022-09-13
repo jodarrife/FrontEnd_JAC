@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Municipio } from 'src/app/models/municipio';
+import { MunicipioService } from 'src/app/services/municipio.service';
 import { CiudadComponent } from '../ciudad/ciudad.component';
 
 @Component({
@@ -11,15 +14,15 @@ import { CiudadComponent } from '../ciudad/ciudad.component';
 export class CiudadListComponent implements OnInit {
 
    //Variable
-   ciudades: any[]=[
-    {ciudadId: 1, nombreCiudad: "valledupar", departamentoId: 1},
-    {ciudadId: 1, nombreCiudad: "fogonia", departamentoId: 2},
-    {ciudadId: 1, nombreCiudad: "codayork", departamentoId: 3},
-  ];
+   listMunicipios: any[]=[];
+   loading = false;
+
   constructor(
     public dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService,
+    private municipioService: MunicipioService,
   ) { }
 
     async ngOnInit() {
@@ -27,9 +30,14 @@ export class CiudadListComponent implements OnInit {
     }
     //CONSULTAR SERVICE
     async consultaCiudades() {
-      //Son servicio
-      //this.departamentos = await this.comunaService.getComunasOnce()
-      //Variable
+      this.loading=true;
+      this.municipioService.GetListMunicipios().subscribe(data => 
+        {
+          this.loading=false;
+          this.listMunicipios = data;
+          console.log(data)
+          
+        });
     }
   
     
@@ -41,22 +49,31 @@ export class CiudadListComponent implements OnInit {
       dialogRef.afterClosed().subscribe(ciudad => {
         console.log('datos ', ciudad);
         if (ciudad) {
-          // registrar datos en firebase
-          //this.comunaService.createComuna(comuna)
-            //.then(() => {
-              console.log("Ciudad registrada exitosamente");
-              console.log(ciudad)
-              //this.consultarComunasOnce();
-            //})
-           // .catch((error) => {
-              //console.log("error al registrar comuna ", error);
-            //})
-          // this.registrarComuna(comuna)
-         this.ciudades.push({
-          ciudadId: 4, nombreCiudad: ciudad.nombre, departamentoId: 1
-          });
+         
+            //console.log(departamento);
+            const municipioDTO: Municipio = {
+              nombre: ciudad.nombre,
+              departamentoId: 1
+            };
+            console.log(municipioDTO);
+           this.municipioService.SaveMunicipio(municipioDTO).subscribe(
+             (data) => {
+               this.toastr.success(
+                 'Municipio agregado correctamente',
+                 'Registro Realizado!'
+               );
+               console.log(data);
+               this.ngOnInit();
+             },
+             (error) => {
+               console.log(error);
+               this.toastr.error(error.error.message, '¡Errors!');
+             }
+           );
+       //volve a llenar la lsita
+        
         }else{
-          console.log("Ciudad no registrada");
+          this.toastr.error("Municipio no registrada", '¡Errors!');
         }
   
       });

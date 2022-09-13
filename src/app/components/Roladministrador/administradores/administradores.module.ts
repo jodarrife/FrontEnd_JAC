@@ -10,7 +10,7 @@ import { MaterialModule } from 'src/app/shared/modules/material/material.module'
 @NgModule({
   declarations: [
     AdministradorComponent,
-    AdministradorListComponent
+    AdministradorListComponent,
   ],
   imports: [
     CommonModule,

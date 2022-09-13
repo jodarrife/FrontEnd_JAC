@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -10,10 +11,14 @@ export class InicioComponent implements OnInit {
 
 
   constructor(
-    private breakpointObserver: BreakpointObserver
+    private loginService: LoginService,
+    private breakpointObserver: BreakpointObserver,
+    
     ) {}
 
   ngOnInit(): void {
+    console.log(this.loginService.getTokenDecoded());
+    console.log(this.loginService.getTokenDecoded().primerNombre +' '+ this.loginService.getTokenDecoded().primerApellido);
   }
 
    /** Based on the screen size, switch from standard to one column per row */

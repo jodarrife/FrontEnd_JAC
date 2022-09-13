@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Ciudad } from 'src/app/models/ciudad';
+import { DepartamentoService } from 'src/app/services/departamento.service';
 
 @Component({
   selector: 'app-ciudad',
@@ -13,11 +13,12 @@ export class CiudadComponent implements OnInit {
   
   //Variables 
   selected = 'option0';
-
+  listDepartamento: any[]=[];
   constructor( 
     //private comunaService:ComunaService, 
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<CiudadComponent>, 
+    public dialogRef: MatDialogRef<CiudadComponent>,
+    private departamentoService: DepartamentoService, 
     @Inject(MAT_DIALOG_DATA) public datosEntrada: any
     ) {
      
@@ -25,10 +26,18 @@ export class CiudadComponent implements OnInit {
 
 
    ngOnInit(): void {
+     this.obtenerLista();
     //this.formularioCiudad.controls['departamento'].setValue(this.datosEntrada?.comuna?.departamentoId || null)
     this.formularioCiudad.controls['nombre'].setValue(this.datosEntrada?.ciudad?.nombre || null);
   }
-
+  obtenerLista(): void{
+    this.departamentoService.GetListDepartamentos().subscribe(data => 
+      {
+        this.listDepartamento = data;
+        console.log(data)
+        
+      });
+  }
    //estructura para usar formulario reactivo
    formularioCiudad = new FormGroup({
     //departamento: new FormControl(null,[Validators.required]),
@@ -42,12 +51,6 @@ export class CiudadComponent implements OnInit {
 
   //al confirmar el registro
   guardar(): void {
-   
-    const ciudadAux: Ciudad={
-      ciudadId: 1,
-      nombreCiudad: this.formularioCiudad.value.nombre,
-      departamentoId:1
-    }
     if (this.formularioCiudad.invalid) {
       return;
     }

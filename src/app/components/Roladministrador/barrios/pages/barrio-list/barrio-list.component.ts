@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Barrio } from 'src/app/models/barrio';
+import { BarrioService } from 'src/app/services/barrio.service';
 import { BarrioComponent } from '../barrio/barrio.component';
 
 @Component({
@@ -12,15 +15,16 @@ export class BarrioListComponent implements OnInit {
 
  
    //Variable
-   barrios: any[]=[
-    {barrioId: 1, nombreBarrio: "12 octubre", comunaId: 1},
-    {barrioId: 1, nombreBarrio: "san fernando", comunaId: 2},
-    {barrioId: 1, nombreBarrio: "san martin", comunaId: 3},
+   loading = false;
+   listBarrios: any[]=[
+    
   ];
   constructor(
     public dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService,
+    private barrioService: BarrioService,
   ) { }
 
     async ngOnInit() {
@@ -28,9 +32,14 @@ export class BarrioListComponent implements OnInit {
     }
     //CONSULTAR SERVICE
     async consultaCiudades() {
-      //Son servicio
-      //this.departamentos = await this.comunaService.getComunasOnce()
-      //Variable
+      this.loading=true;
+    this.barrioService.GetListBarrios().subscribe(data => 
+      {
+        this.loading=false;
+        this.listBarrios = data;
+        console.log(data)
+        
+      });
     }
   
     
@@ -42,22 +51,31 @@ export class BarrioListComponent implements OnInit {
       dialogRef.afterClosed().subscribe(barrio => {
         console.log('datos ', barrio);
         if (barrio) {
-          // registrar datos en firebase
-          //this.comunaService.createComuna(comuna)
-            //.then(() => {
-              console.log("barrio registrada exitosamente");
-              console.log(barrio)
-              //this.consultarComunasOnce();
-            //})
-           // .catch((error) => {
-              //console.log("error al registrar comuna ", error);
-            //})
-          // this.registrarComuna(comuna)
-         this.barrios.push({
-          barrioId: 4, nombreBarrio: barrio.nombre, comunaId: 1
-          });
+          //console.log(departamento);
+          const barrioDTO: Barrio = {
+            nombre: barrio.nombre,
+            comunaId: 1
+          };
+          console.log(barrioDTO);
+         this.barrioService.SaveBarrio(barrioDTO).subscribe(
+           (data) => {
+             this.toastr.success(
+               'Barrio agregado correctamente',
+               'Registro Realizado!'
+             );
+             console.log(data);
+             this.ngOnInit();
+           },
+           (error) => {
+             console.log(error);
+             this.toastr.error(error.error.message, '¡Errors!');
+           }
+         );
+     //volve a llenar la lsita 
+    
         }else{
-          console.log("barrio no registrada");
+          this.toastr.error("Barrio no registrada", '¡Errors!');
+       
         }
   
       });

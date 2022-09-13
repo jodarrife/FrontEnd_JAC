@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,9 +20,17 @@ import { AdministradoresComponent } from './components/Roladministrador/administ
 import { BarriosComponent } from './components/Roladministrador/barrios/barrios.component';
 import { CiudadesComponent } from './components/Roladministrador/ciudades/ciudades.component';
 import { HabitantesComponent } from './components/Roladministrador/habitantes/habitantes.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
-@NgModule({
+import { ToastrModule } from 'ngx-toastr';
+
+//interceptors
+import { AddTokenInterceptor } from '../app/helpers/add-token.interceptor';
+import { ModalConfirmacionComponent } from './shared/components/modal-confirmacion/modal-confirmacion.component'
+import { LoadingComponent } from './shared/components/loading/loading.component';
+
+@NgModule({schemas: [   CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [
     AppComponent,
     MenuPrincipalComponent,
@@ -32,7 +40,9 @@ import { HabitantesComponent } from './components/Roladministrador/habitantes/ha
     DepatamentosComponent,
     ComunasComponent,
     CiudadesComponent,
-    HabitantesComponent
+    HabitantesComponent,
+    LoadingComponent,
+    ModalConfirmacionComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +54,13 @@ import { HabitantesComponent } from './components/Roladministrador/habitantes/ha
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
+    
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },],
+ 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

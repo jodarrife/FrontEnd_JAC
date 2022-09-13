@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CiudadesRoutingModule } from './ciudades-routing.module';
@@ -8,7 +8,7 @@ import { CiudadListComponent } from './pages/ciudad-list/ciudad-list.component';
 import { CiudadDetalleComponent } from './pages/ciudad-detalle/ciudad-detalle.component';
 
 
-@NgModule({
+@NgModule({schemas: [   CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [
     CiudadComponent,
     CiudadListComponent,

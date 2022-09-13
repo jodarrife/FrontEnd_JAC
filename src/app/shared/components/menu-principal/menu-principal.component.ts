@@ -1,5 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-menu-principal',
@@ -12,10 +14,12 @@ export class MenuPrincipalComponent implements OnInit {
   private _mobileQueryListener: () => void;
   user:any
   mobileQuery: MediaQueryList;
-  
+  nombreUser!: string;
   constructor(
     changeDetectorRef: ChangeDetectorRef,
      media: MediaMatcher, 
+     private router: Router,
+     private loginService: LoginService
     ) {
 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -24,7 +28,20 @@ export class MenuPrincipalComponent implements OnInit {
     }
   ngOnInit(): void {
    
+    this.getNombreUsuario();
+  }
+  //recuperar el nombre usuario
+  getNombreUsuario(): void{
+   
+    console.log(this.loginService.getTokenDecoded().primerNombre +' '+ this.loginService.getTokenDecoded().primerApellido);
+    this.nombreUser = this.loginService.getTokenDecoded().primerNombre +' '+ this.loginService.getTokenDecoded().primerApellido;
+  }
+
+  //log out
+  logOut(): void{
     
+    this.loginService.removeLocalStorage();
+    this.router.navigate(['/authentication/login']);
   }
   //Visitante
   public allPages = [
@@ -42,37 +59,37 @@ export class MenuPrincipalComponent implements OnInit {
     },
     {
       title: 'Administradores',
-      url: '/RolAdminA',
+      url: '/RolAdminAdministrador',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },
     {
       title: 'Departamentos',
-      url: '/RolAdminD',
+      url: '/RolAdminDepartamento',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },
     {
-      title: 'Ciudad',
-      url: '/RolAdminE',
+      title: 'Municipios',
+      url: '/RolAdminMunicipio',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },
     {
       title: 'Comunas',
-      url: '/RolAdminC',
+      url: '/RolAdminComuna',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },
     {
       title: 'Barrios',
-      url: '/RolAdminF',
+      url: '/RolAdminBarrio',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },
     {
       title: 'Habitantes',
-      url: '/RolAdminG',
+      url: '/RolAdminHabitante',
       iconMaterial: null,
       iconFa: 'fas fa-city'
     },

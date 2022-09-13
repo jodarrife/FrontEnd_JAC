@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
@@ -8,18 +8,24 @@ import { MaterialModule } from 'src/app/shared/modules/material/material.module'
 import { RecuperarComponent } from './pages/recuperar/recuperar.component';
 import { CompletarPerfilComponent } from './pages/completar-perfil/completar-perfil.component';
 
+
+
+
 @NgModule({
+  schemas: [   CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [
     InicioSesionComponent,
     RegistrarseComponent,
     RecuperarComponent,
-    CompletarPerfilComponent,
+    CompletarPerfilComponent    
+
 
   ],
   imports: [
     CommonModule,
     LoginRoutingModule,
-    MaterialModule
+    MaterialModule,
+    
   ]
 })
 export class LoginModule { }

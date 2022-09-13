@@ -12,7 +12,7 @@
         <span class="example-spacer font1"></span>
         <h2 class="task">
             <b>
-                USER
+                {{nombreUser}}
             </b>
         </h2>
         <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu"
@@ -28,12 +28,12 @@
                 </button>
             </div>
 
-            <div *ngIf="user" class="font1">
+            <div *ngIf="!user" class="font1">
                 <button class="font1" mat-menu-item [routerLink]="['/perfil']">
                     <mat-icon color="primary">assignment_ind</mat-icon>
                     <span class="font1">Perfil</span>
                 </button>
-                <button mat-menu-item [routerLink]="['/autenticacion/login']">
+                <button mat-menu-item (click)="logOut()">
                     <mat-icon class="material-icons color_red">keyboard_tab</mat-icon>
                     <span class="font1">Cerrar Sesion</span>
                 </button>

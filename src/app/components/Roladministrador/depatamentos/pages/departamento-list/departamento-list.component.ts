@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Departamento } from 'src/app/models/departamento';
+import { DepartamentoService } from 'src/app/services/departamento.service';
 import { DepartamentoComponent } from '../departamento/departamento.component';
 
 @Component({
@@ -12,30 +14,36 @@ import { DepartamentoComponent } from '../departamento/departamento.component';
 export class DepartamentoListComponent implements OnInit {
 
   //Variable
-  departamentos: any[]=[
-    {departamentoId: 1, nombreDepartamento: "Cesar"},
-    {departamentoId: 2, nombreDepartamento: "prueba"},
-    {departamentoId: 3, nombreDepartamento: "esPrueba"},
-  ];
+  listDepartamentos: any[]=[];
+  loading = false;
 
   constructor(
     public dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
+    private departamenService: DepartamentoService,
+
+    private toastr: ToastrService,
   ) { }
 
 
-  async ngOnInit() {
-    await this.consultarDepartamentos();
+ ngOnInit(): void {
+  this.loading=true;
+     this.consultarDepartamentos();
   }
   //CONSULTAR SERVICE
-  async consultarDepartamentos() {
-    //Son servicio
-    //this.departamentos = await this.comunaService.getComunasOnce()
-    //Variable
+  consultarDepartamentos(): void {
+    this.loading=true;
+    this.departamenService.GetListDepartamentos().subscribe(data => 
+      {
+        this.loading=false;
+        this.listDepartamentos = data;
+        console.log(data)
+        
+      });
   }
 
-  
+ 
   //MODAL CREAR SERVICE
   modalFormulario() {
     const dialogRef = this.dialog.open(DepartamentoComponent, { 
@@ -43,26 +51,40 @@ export class DepartamentoListComponent implements OnInit {
       data: { titulo: "Registrar", departamento: null }
       });
     dialogRef.afterClosed().subscribe(departamento => {
-      console.log('datos ', departamento);
+      //console.log('datos ', departamento);
       if (departamento) {
-        // registrar datos en firebase
-        //this.comunaService.createComuna(comuna)
-          //.then(() => {
-            console.log("comuna registrada exitosamente");
-            console.log(departamento)
-            //this.consultarComunasOnce();
-          //})
-         // .catch((error) => {
-            //console.log("error al registrar comuna ", error);
-          //})
-        // this.registrarComuna(comuna)
-       this.departamentos.push({
-         departamentoId:  1, nombreDepartamento: departamento.nombre
-        });
+        
+            //console.log(departamento);
+            const departamentoDTO: Departamento = {
+              nombre: departamento.nombre
+            };
+            console.log(departamentoDTO);
+            this.loading=true;
+           this.departamenService.SaveDepartamento(departamentoDTO).subscribe(
+             (data) => {
+              this.loading=false;
+               this.toastr.success(
+                 'Departamento agregado correctamente',
+                 'Registro Realizado!'
+               );
+               console.log(data);
+               this.ngOnInit();
+             },
+             (error) => {
+              this.loading=false;
+               console.log(error);
+               this.toastr.error(error.error.message, '¡Errors!');
+             }
+           );
+       //volve a llenar la lsita
+       
       }else{
-        console.log("comuna no registrada");
+        this.loading=false;
+        this.toastr.info("Departamento no registrada", 'OJO!');
+       
       }
-
+      
     });
+    
   }
 }

@@ -1,14 +1,10 @@
 export class Barrio {
-
-  barrioId: number | undefined;
-  nombreBarrio: string | undefined;
-  comunaId: number | undefined;
   
+  nombre: string | undefined;
+  comunaId: number | undefined;
 
-
-  constructor(barrioId: number, nombreBarrio:string,comunaId:number){
-    this.barrioId=barrioId;
-    this.nombreBarrio=nombreBarrio;
+  constructor( nombre:string,comunaId:number){
+    this.nombre=nombre;
     this.comunaId=comunaId;
   }
   

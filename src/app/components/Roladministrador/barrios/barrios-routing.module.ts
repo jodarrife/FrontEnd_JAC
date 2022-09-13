@@ -6,7 +6,7 @@ const routes: Routes = [
   //{ path: '', component: DepatamentosComponent ,redirectTo: 'List-Departamentos'},
   { path: 'Barrio', loadChildren: () => import('./pages/barrio/barrio.module').then(m => m.BarrioModule) },
   { path: '', loadChildren: () => import('./pages/barrio-list/barrio-list.module').then(m => m.BarrioListModule) },
-  { path: 'Detalle-CiBarrioudad', loadChildren: () => import('./pages/barrio-detalle/barrio-detalle.module').then(m => m.BarrioDetalleModule) },
+  { path: 'verBarrio/:id', loadChildren: () => import('./pages/barrio-detalle/barrio-detalle.module').then(m => m.BarrioDetalleModule) },
 ];
 
 @NgModule({

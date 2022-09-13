@@ -88,20 +88,40 @@
           </div>
         </div>
       </div>
-      <!-----------------------------------FECHA NACIMIENTO-->
-      <mat-form-field appearance="outline">
-        <mat-label>Fecha de Nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-hint align="start">
-          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('fechaNacimiento')?.hasError('required') 
-          && formularioHabitante.get('fechaNacimiento')?.touched">
-            La Fecha <strong>es requerido</strong>
-          </span>
-        </mat-hint>
-      </mat-form-field>
+      <!-----------------------------------FECHA NACIMIENTO yy EDAD-->
+
+
+       <div class="row bottom-xs">
+        <div class="col-xs-6">
+          <div class="box">
+            <mat-form-field appearance="outline">
+              <mat-label>Fecha de Nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento"  (dateChange)="addEvent('change', $event)">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-hint align="start">
+                <span class="text-danger ml-2" *ngIf="formularioHabitante.get('fechaNacimiento')?.hasError('required') 
+                && formularioHabitante.get('fechaNacimiento')?.touched">
+                  La Fecha <strong>es requerido</strong>
+                </span>
+              </mat-hint>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="box">
+            <mat-form-field appearance="outline">
+              <mat-label>Edad</mat-label>
+              <input matInput placeholder="edad"  formControlName="edad" [ngModel]="edad" 
+                   readonly>
+
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+      
 
       <!-----------------------------------GENERO-->
       <mat-form-field appearance="outline">
@@ -113,7 +133,7 @@
         </mat-select>
         <mat-hint align="start">
           <span class="text-danger ml-2" *ngIf="formularioHabitante.get('tipoGenero')?.hasError('required') 
-          && formularioHabitante.get('fechatipoGeneroNacimiento')?.touched">
+          && formularioHabitante.get('tipoGenero')?.touched">
             La Fecha <strong>es requerido</strong>
           </span>
         </mat-hint>
@@ -136,22 +156,42 @@
         <mat-label>Telefono</mat-label>
         <input matInput placeholder="Telefono" formControlName="telefono" >
       </mat-form-field>
-      <!-----------------------------------BARRIO-->
-      <mat-form-field appearance="outline">
-        <mat-label>Barrio</mat-label>
-        <mat-select placeholder="Barrio" formControlName="barrio">
-          <mat-option value="sam">San</mat-option>
-          <mat-option value="san">12 de</mat-option>
-          <mat-option value="otro">Otro</mat-option>
-        </mat-select>
-        <mat-hint align="start">
-          <span class="text-danger ml-2" *ngIf="formularioHabitante.get('barrio')?.hasError('required') 
-          && formularioHabitante.get('barrio')?.touched">
-            El Correo <strong>es requerido</strong>
-          </span>
-        </mat-hint>
-      </mat-form-field>
-
+      <!-----------------------------------BARRIO y comuna -->
+      <div class="row bottom-xs">
+        <div class="col-xs-6">
+          <div class="box">
+            <mat-form-field appearance="outline">
+              <mat-label>Comuna</mat-label>
+              <mat-select placeholder="Tipo Genero" formControlName="comuna">
+                  <mat-option  *ngFor="let comuna of listComuna" value="comuna.id">{{ comuna.nombre }}</mat-option>
+              </mat-select>
+              <mat-hint align="start">
+                  <span class="text-danger ml-2" *ngIf="formularioHabitante.get('comuna')?.hasError('required') 
+&& formularioHabitante.get('comuna')?.touched">
+                      La Comuna <strong>es requerido</strong>
+                  </span>
+              </mat-hint>
+          </mat-form-field>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="box">
+            <mat-form-field appearance="outline">
+              <mat-label>Barrio</mat-label>
+              <mat-select placeholder="Barrio" formControlName="barrio">
+                  <mat-option  *ngFor="let barrio of listBarrio" value="barrio.id">{{ barrio.nombre }}</mat-option>
+              </mat-select>
+              <mat-hint align="start">
+                  <span class="text-danger ml-2" *ngIf="formularioHabitante.get('barrio')?.hasError('required') 
+&& formularioHabitante.get('barrio')?.touched">
+                      El barrio <strong>es requerido</strong>
+                  </span>
+              </mat-hint>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+      
       <!-----------------------------------CONTRASEÑA-->
       <mat-form-field appearance="outline">
         <mat-label>Contraseña</mat-label>
@@ -163,7 +203,6 @@
           </span>
         </mat-hint>
       </mat-form-field>
-
 
     </div>
   </mat-dialog-content>

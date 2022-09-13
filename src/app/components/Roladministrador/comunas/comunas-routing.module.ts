@@ -6,7 +6,7 @@ const routes: Routes = [
   //{ path: '', component: ComunasComponent ,redirectTo: 'List-Comunas'},
   { path: 'Comuna', loadChildren: () => import('./pages/comuna/comuna.module').then(m => m.ComunaModule) },
   { path: '', loadChildren: () => import('./pages/comuna-list/comuna-list.module').then(m => m.ComunaListModule) },
-  { path: 'Detalle-Comuna', loadChildren: () => import('./pages/comuna-detalle/comuna-detalle.module').then(m => m.ComunaDetalleModule) },
+  { path: 'verComuna/:id', loadChildren: () => import('./pages/comuna-detalle/comuna-detalle.module').then(m => m.ComunaDetalleModule) },
 ];
 
 @NgModule({

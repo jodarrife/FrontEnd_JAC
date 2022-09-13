@@ -1,9 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Habitante } from 'src/app/models/habitante';
+import { HabitanteService } from 'src/app/services/habitante.service';
 import { HabitanteComponent } from '../habitante/habitante.component';
 
 @Component({
@@ -13,96 +17,36 @@ import { HabitanteComponent } from '../habitante/habitante.component';
 })
 export class HabitanteListComponent implements OnInit {
   //Variable
-  habitantesList: any[] = [
-    {
-      documento: 1122,
-      nombreCompleto: 'Hydrogen',
-      telefono: '3004125896',
-      barrioNombre: 'san1',
-    },
-    {
-      documento: 1123,
-      nombreCompleto: 'Helium',
-      telefono: '3004125896',
-      barrioNombre: 'san2',
-    },
-    {
-      documento: 1124,
-      nombreCompleto: 'Lithium',
-      telefono: '3004125896',
-      barrioNombre: 'san3',
-    },
-    {
-      documento: 1125,
-      nombreCompleto: 'Beryllium',
-      telefono: '3004125896',
-      barrioNombre: 'san4',
-    },
-    {
-      documento: 1126,
-      nombreCompleto: 'Boron',
-      telefono: '3004125896',
-      barrioNombre: 'san5',
-    },
-    {
-      documento: 1127,
-      nombreCompleto: 'Carbon',
-      telefono: '3004125896',
-      barrioNombre: 'san6',
-    },
-    {
-      documento: 1128,
-      nombreCompleto: 'Nitrogen',
-      telefono: '3004125896',
-      barrioNombre: 'san7',
-    },
-    {
-      documento: 1129,
-      nombreCompleto: 'Oxygen',
-      telefono: '3004125896',
-      barrioNombre: 'san8',
-    },
-    {
-      documento: 11210,
-      nombreCompleto: 'Fluorine',
-      telefono: '3004125896',
-      barrioNombre: 'san9',
-    },
-    {
-      documento: 11211,
-      nombreCompleto: 'Neon',
-      telefono: '3004125896',
-      barrioNombre: 'san10',
-    },
-  ];
 
+  listHabitante: any[] = [];
 
   //filtro en tabla
   displayedColumns: string[] = [
-    'documento',
-    'nombreCompleto',
+    'tipoDocumento',
+    'numeroDocumento',
+    'nombreApellido',
+    'correo',
+    'direccion',
     'telefono',
-    'barrioNombre',
-    'accion'
+    'genero',
+    'edad',
+    'accion',
   ];
-  dataSource = new MatTableDataSource(this.habitantesList);
+  dataSource!: MatTableDataSource<any>;
   //paginador
   //paginador
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
-  
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
 
   //contructor
   constructor(
     public dialog: MatDialog,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
+    private habitanteService: HabitanteService
   ) {}
 
   async ngOnInit() {
@@ -110,9 +54,12 @@ export class HabitanteListComponent implements OnInit {
   }
   //CONSULTAR SERVICE
   async consultarHabitantes() {
-    //Son servicio
-    //this.departamentos = await this.comunaService.getComunasOnce()
-    //Variable
+    this.habitanteService.GetListHabitantes().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      console.log(this.listHabitante);
+    });
   }
 
   //MODAL CREAR SERVICE
@@ -122,30 +69,49 @@ export class HabitanteListComponent implements OnInit {
       data: { titulo: 'Registrar', habitanted: null },
     });
     dialogRef.afterClosed().subscribe((habitanted) => {
-      
       if (habitanted) {
-        // registrar datos en firebase
-        //this.comunaService.createComuna(comuna)
-        //.then(() => {
-        console.log('habitante registrada exitosamente');
-        console.log('datos dentro if ', 'id: ',habitanted.documento,
-          'nombre: ',habitanted.primerNombre + habitanted.primerApellido,
-         'tel: ',habitanted.telefono,
-         'barrio; ',habitanted.barrio,);
-        //this.consultarComunasOnce();
-        //})
-        // .catch((error) => {
-        //console.log("error al registrar comuna ", error);
-        //})
-        // this.registrarComuna(comuna)
-        this.habitantesList.push({
-          documento: habitanted.documento,
-          nombreCompleto:  habitanted.primerNombre + ' ' + habitanted.primerApellido,
+        console.log(habitanted);
+        const habitante: Habitante = {
+          tipoDocumento: habitanted.tipoDocumento,
+          numeroDocumento: habitanted.numeroDocumento,
+          primerNombre: habitanted.primerNombre,
+          segundoNombre: habitanted.segundoNombre,
+          primerApellido: habitanted.primerApellido,
+          segundoApellido: habitanted.segundoApellido,
+          correo: habitanted.correo,
+          direccion: habitanted.direccion,
+          fechaNacimiento: habitanted.fechaNacimiento,
           telefono: habitanted.telefono,
-          barrioNombre: habitanted.barrio
-        });
+          genero: habitanted.genero,
+          edad: habitanted.edad,
+          barrioId: habitanted.barrioId,
+          comunaId: habitanted.comunaId,
+          estado: habitanted.estado,
+          password: habitanted.password,
+        };
+        this.habitanteService.saveHabitante(habitante).subscribe(
+          (data) => {
+            console.log('data habitante' + data);
+            this.toastr.success(
+              'El usuario ' +
+                habitante.primerNombre +
+                ' ' +
+                habitante.primerApellido +
+                ' fue agregado con exito.',
+              'registro realizado!'
+            );
+            this.ngOnInit();
+          },
+          (error) => {
+            console.log(error);
+            this.toastr.error(error.error.message, '¡Errors!');
+          }
+        );
       } else {
-        console.log('habitante no registrada');
+        this.toastr.success(
+          'No se pudo agregar habitante',
+          'registro rechazado!'
+        );
       }
     });
   }
